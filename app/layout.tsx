@@ -1,5 +1,8 @@
+import { ConvexClientProvider } from "@/components/web/ConvexClientProvider";
+import { ThemeProvider } from "@/components/web/theme-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,11 +26,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="max-w-7xl mx-auto w-full px-4 md:px-6 lg:px-8">
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </main>
+          <Toaster closeButton />
+        </ThemeProvider>
       </body>
     </html>
   );
