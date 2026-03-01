@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "brainy-octopus-805.eu-west-1.convex.cloud",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "fleet-echidna-978.eu-west-1.convex.cloud",
+        port: "",
+      },
     ],
   },
 };
